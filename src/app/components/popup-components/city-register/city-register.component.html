@@ -1,0 +1,21 @@
+<popup-content-large style="display: flex; justify-content: center;">
+  <form #frmCityRegister="ngForm" novalidate (submit)="doRegister(frmCityRegister)">
+    <div>
+      <wj-combo-box [itemsSource]="countryList" #countryId="ngModel" name="country_id" [(ngModel)]="city.country_id" [selectedValuePath]="'id'"
+        [displayMemberPath]="'name'" required>
+      </wj-combo-box>
+      <div style="color: red" *ngIf="countryId.invalid && (countryId.dirty || countryId.touched)">
+        <small>Bu Alan Gerekli!</small>
+      </div>
+    </div>
+    <div style="margin-top: 5px;">
+      <wj-input-mask name="name" placeHolder="City Name" #name="ngModel" [(ngModel)]="city.name" required></wj-input-mask>
+      <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <small>Bu Alan Gerekli!</small>
+      </div>
+    </div>
+    <div style="float:right; margin-top: 5px;">
+      <button class="button-small" type="submit">Register</button>
+    </div>
+  </form>
+</popup-content-large>

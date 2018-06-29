@@ -1,0 +1,13 @@
+<popup-content-large style="display: flex; justify-content: center;">
+  <form #frmCountryRegister="ngForm" novalidate (submit)="doRegister(frmCountryRegister)">
+    <div>
+      <wj-input-mask name="name" placeHolder="Country Name" #name="ngModel" [(ngModel)]="country.name" required></wj-input-mask>
+      <div style="color: red" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <small>Bu Alan Gerekli!</small>
+      </div>
+    </div>
+    <div style="float:right; margin-top: 5px;">
+      <button class="button-small" type="submit">Register</button>
+    </div>
+  </form>
+</popup-content-large>

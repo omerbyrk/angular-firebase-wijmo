@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Nunito:600');
+
+body {
+    background-color: #F2F3F4;
+    font-family: "Nunito"
+}
+
+small {
+    color: red;
+}
+
+button {
+    background-color: #F2F3F4;
+    border: 1px solid #D7DBDD;
+    color: #797D7F;
+    padding: 8px 12px;
+    border-radius: 3px;
+    outline: none;
+}
+
+.button-small {
+    padding: 4px 6px !important;
+    font-size: small !important;
+}
+
+button:hover {
+    background-color: #F8F9F9;
+    border: 1px solid #E5E7E9;
+    color: #A6ACAF;
+}
+
+.modal-content > * {
+    width: 100% !important;
+}

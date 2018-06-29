@@ -1,0 +1,10 @@
+<wj-popup class="modal" #popup (hidden)="hidden($event)">
+  <main style="width: max-content;">
+    <header style="background-color: #E5E7E9; padding: 10px 25px 10px 25px; border-bottom: 1px solid #CACFD2;">
+      <h2 style="padding: 0; margin: 0;">{{props.title}}</h2>
+    </header>
+    <div style="display: flex; flex: 1; background-color: #FBFCFC; padding: 10px 10px 10px 5px;" class="modal-content">
+      <span style="display: none" #body></span>
+    </div>
+  </main>
+</wj-popup>

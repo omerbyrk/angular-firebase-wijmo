@@ -1,0 +1,71 @@
+<main>
+  <fieldset>
+    <legend>
+      <h3>Person Register</h3>
+    </legend>
+    <form novalidate (submit)="register(frmRegister)" #frmRegister="ngForm" autocomplete="off">
+      <table>
+        <tr>
+          <th>Name: </th>
+          <td>
+            <wj-input-mask name="name" [(ngModel)]="person.name" #name="ngModel" minlength="4" maxlength="10" required></wj-input-mask>
+            <div *ngIf="name.invalid && (name.touched || name.dirty)">
+              <small *ngIf="name.errors?.required">
+                Name is required
+              </small>
+              <small *ngIf="name.errors?.minlength">
+                The character must be over 4
+              </small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Surname: </th>
+          <td>
+            <wj-input-mask name="surname" [(ngModel)]="person.surname" #surname="ngModel" required></wj-input-mask>
+            <div *ngIf="surname.invalid && (surname.touched || surname.dirty)">
+              <small>Surname is required</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Phone: </th>
+          <td>
+            <wj-input-mask name="phone" mask="+\0\9(000) 000 00 00" [(ngModel)]="person.phone" #phone="ngModel" required></wj-input-mask>
+            <div *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+              <small>Phone is required</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Country: </th>
+          <td>
+            <wj-combo-box [itemsSource]="countryList" name="country" [(ngModel)]="person._country" [displayMemberPath]="'name'" required>
+            </wj-combo-box>
+          </td>
+        </tr>
+        <tr>
+          <th>City: </th>
+          <td>
+            <wj-combo-box [itemsSource]="person._country && person._country.cityList ||[]" name="city" [(ngModel)]="person._city" [displayMemberPath]="'name'"
+              required (selectedIndexChanged)="onCountryChanged($event)">
+            </wj-combo-box>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit" style="float:right">Register</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div style="display: flex; justify-content: space-evenly">
+              <button type="button" (click)="showCountryRegisterPopup()">Add Country</button>
+              <button type="button" (click)="showCityRegisterPopup()">Add City</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </fieldset>
+</main>
